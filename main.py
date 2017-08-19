@@ -171,9 +171,9 @@ background: green;
 class Product(ndb.Model):
      Clientname = ndb.StringProperty(indexed=True)
      emailid = ndb.StringProperty(indexed=True)
-	 productname = ndb.StringProperty(indexed=True)
-	 descriptions = ndb.TextProperty(indexed=True)
-	 quantity = ndb.IntegerProperty(indexed=True)	 
+     productname = ndb.StringProperty(indexed=True)
+     descriptions = ndb.TextProperty(indexed=True)
+     quantity = ndb.IntegerProperty(indexed=True)	 
      when = ndb.DateTimeProperty(auto_now_add=True)
 	 
 	 
@@ -189,17 +189,17 @@ class MainHandler(webapp2.RequestHandler):
    def post(self):
      Clientname = self.request.get('names')
      emailid = self.request.get('emailid')
-	 productname = self.request.get('pname')
-	 descriptions = self.request.get('descriptions')
-	 quantity = self.request.get('quantity')
+     productname = self.request.get('pname')
+     descriptions = self.request.get('descriptions')
+     quantity = int(self.request.get('quantity'))
      products = Product()
      products.Clientname=Clientname
      products.emailid=emailid
-	 products.productname=productname
-	 products.descriptions=descriptions
-	 products.quantity=quantity
+     products.productname=productname
+     products.descriptions=descriptions
+     products.quantity=quantity
      products.put()
      self.redirect('/')
 	 
-app = webapp2.WSGIApplication([('/', MyHandler),('/confirm', MainHandler), 
+app = webapp2.WSGIApplication([('/', MyHandler),('/confirm', MainHandler)], 
  debug=True)
