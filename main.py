@@ -21,10 +21,10 @@ var Pic = new Array() // don't touch this
 // to add more images, just continue
 // the pattern, adding to the array below
 
-Pic[0] = 'download.jpg'
-Pic[1] = 'download1.jpg'
-Pic[2] = 'images.jpg'
-Pic[3] = 'images1.jpg'
+Pic[0] = '/images/download.jpg'
+Pic[1] = '/images/download1.jpg'
+Pic[2] = '/images/images.jpg'
+Pic[3] = '/images/images1.jpg'
 
 // =======================================
 // do not edit anything below this line
@@ -169,12 +169,12 @@ background: green;
    
    
 class Product(ndb.Model):
-     Clientname = ndb.StringProperty(indexed=True)
-     emailid = ndb.StringProperty(indexed=True)
-     productname = ndb.StringProperty(indexed=True)
-     descriptions = ndb.TextProperty(indexed=True)
-     quantity = ndb.IntegerProperty(indexed=True)	 
-     when = ndb.DateTimeProperty(auto_now_add=True)
+      Clientname = ndb.StringProperty(indexed=True)
+      emailid = ndb.StringProperty(indexed=True)
+      productname = ndb.StringProperty(indexed=True)
+      descriptions = ndb.TextProperty(indexed=True)
+      quantity = ndb.IntegerProperty(indexed=True)	 
+      when = ndb.DateTimeProperty(auto_now_add=True)
 	 
 	 
 	 
@@ -187,19 +187,19 @@ class MyHandler(webapp2.RequestHandler):
 		
 class MainHandler(webapp2.RequestHandler):
    def post(self):
-     Clientname = self.request.get('names')
-     emailid = self.request.get('emailid')
-     productname = self.request.get('pname')
-     descriptions = self.request.get('descriptions')
-     quantity = int(self.request.get('quantity'))
-     products = Product()
-     products.Clientname=Clientname
-     products.emailid=emailid
-     products.productname=productname
-     products.descriptions=descriptions
-     products.quantity=quantity
-     products.put()
-     self.redirect('/')
+      Clientname = self.request.get('names')
+      emailid = self.request.get('emailid')
+      productname = self.request.get('pname')
+      descriptions = self.request.get('descriptions')
+      quantity = int(self.request.get('quantity'))
+      products = Product()
+      products.Clientname=Clientname
+      products.emailid=emailid
+      products.productname=productname
+      products.descriptions=descriptions
+      products.quantity=quantity
+      products.put()
+      self.redirect('/')
 	 
 app = webapp2.WSGIApplication([('/', MyHandler),('/confirm', MainHandler)], 
  debug=True)
