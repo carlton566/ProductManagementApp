@@ -12,7 +12,7 @@ handlers:
   static_dir: bootstrap
 
 - url: .*
-  script: main1.app
+  script: main.app
 # [END handlers]
 
 # [START libraries]
